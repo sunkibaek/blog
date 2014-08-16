@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="BlogApp">
   <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Sunki Baek :: Web Developer</title>
@@ -16,7 +17,55 @@
     <div class="wrapper">
       <header>
         <h1>Sunki Baek<br><small>a web developer</small></h1>
+
+        <ul>
+          <li>
+            <a href="#body-length-for-age-percentile-calculator-by-who-data">Body length for age percentile calculator by WHO data</a>
+          </li>
+          <li>
+            <a href="#flash-notice-in-ruby-on-rails">Flash notice in Ruby on Rails</a>
+          </li>
+        </ul>
       </header>
+
+      <section id="flash-notice-in-ruby-on-rails">
+        <h3>Flash notice in Ruby on Rails</h3>
+
+        <p>Ruby on Rails provides convenient ways to alert users by saving
+        messages from server in sessions so that they can be displayed in
+        response to user activity. Common examples include showing validation
+        errors in sign up form.</p>
+
+        <figure>
+          <img src="images/wrong_username_or_password.png">
+          <figcaption>Users are notified through session saved info from server.</figcaption>
+        </figure>
+
+        <p>Rails API behind this is <a
+          href="http://api.rubyonrails.org/classes/ActionDispatch/Flash/FlashHash.html">FlashHash</a>.
+        We can use this to save any Ruby objects between two actions.
+        </p>
+
+        <code><pre># in some controller
+flash[:notice] = 'Your data has been succefully saved!'
+
+# in some view
+<%= flash[:notice] %></pre></code>
+
+        <p>Although we can use any name as key, <code>notice</code> and
+        <code>alert</code> are quite commonly used so Rails have more convenient
+        way to save and read those.</p>
+
+        <code><pre># in some controller
+flash.notice = 'It is also possible to save notice this way.'
+
+# and in some view
+<%= flash.notice %></pre></code>
+
+        <p>Hope this helps.</p>
+
+        <p>August 14 2014 Sunki Baek</p>
+      </section>
 
       <section ng-controller="LengthForAgeCtrl as length_for_age" id="body-length-for-age-percentile-calculator-by-who-data">
         <h3>Body length for age percentile calculator by WHO data</h3>
@@ -84,7 +133,6 @@
         </p>
       </footer>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
     <script src="https://www.google.com/jsapi"></script>
     <script src="javascripts/main.js"></script>
     <script src="javascripts/scale.fix.js"></script>
